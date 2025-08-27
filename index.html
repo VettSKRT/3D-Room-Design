@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualisasi Kamar 3D</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="controls-panel">
+        <div class="panel-section">
+            <h3>Ukuran Ruangan (m)</h3>
+            <div class="input-group">
+                <label for="room-width">Lebar</label>
+                <input type="number" id="room-width" value="8">
+            </div>
+            <div class="input-group">
+                <label for="room-depth">Panjang</label>
+                <input type="number" id="room-depth" value="6">
+            </div>
+            <div class="input-group">
+                <label for="room-height">Tinggi</label>
+                <input type="number" id="room-height" value="3">
+            </div>
+            <button id="create-room-btn">Buat Ruangan</button>
+        </div>
+        
+        <div class="panel-section">
+            <h3>Mode Kontrol</h3>
+            <div class="button-group">
+                <button id="mode-translate" class="mode-btn active" title="Pindah">✥</button>
+                <button id="mode-rotate" class="mode-btn" title="Putar">🔄</button>
+                <button id="mode-scale" class="mode-btn" title="Skala">📏</button>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <h3>Warna Dinding</h3>
+            <div id="color-palette" class="button-grid">
+                <div class="color-swatch" style="background-color: #d9d9d9;" data-color="#d9d9d9"></div>
+                <div class="color-swatch" style="background-color: #f5f5dc;" data-color="#f5f5dc"></div>
+                <div class="color-swatch" style="background-color: #add8e6;" data-color="#add8e6"></div>
+                <div class="color-swatch" style="background-color: #90ee90;" data-color="#90ee90"></div>
+                <div class="color-swatch" style="background-color: #ffb6c1;" data-color="#ffb6c1"></div>
+                <div class="color-swatch" style="background-color: #fffacd;" data-color="#fffacd"></div>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <h3>Tambah Elemen</h3>
+            <div class="button-grid">
+                <button id="add-wall-btn" class="add-element-btn">🧱 Dinding</button>
+                <button id="add-window-btn" class="add-element-btn">🖼️ Jendela</button>
+                <button id="add-door-btn" class="add-element-btn">🚪 Pintu</button>
+            </div>
+        </div>
+
+        <div class="panel-section">
+            <h3>Tambah Perabotan</h3>
+            <div class="button-grid">
+                <button class="add-item-btn" data-model="models/bed.glb">Kasur</button>
+                <button class="add-item-btn" data-model="models/lemari.glb">Lemari</button>
+                <button class="add-item-btn" data-model="models/meja.glb">Meja</button>
+                <button class="add-item-btn" data-model="models/toilet.glb">Toilet</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas-3d"></canvas>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.167.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.167.0/examples/jsm/",
+                "three-csg-ts": "https://esm.sh/three-csg-ts"
+            }
+        }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

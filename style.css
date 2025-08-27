@@ -1,0 +1,169 @@
+/* --- Pengaturan Dasar & Variabel Warna --- */
+:root {
+    --bg-panel: rgba(255, 255, 255, 0.9);
+    --text-color: #333;
+    --border-color: #e0e0e0;
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --button-bg: #f8f9fa;
+    --button-hover: #e9ecef;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+}
+
+#canvas-3d {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+#canvas-3d.crosshair-cursor {
+    cursor: crosshair;
+}
+
+/* --- Panel Kontrol Utama --- */
+#controls-panel {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 240px;
+    background-color: var(--bg-panel);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 10px;
+    backdrop-filter: blur(5px); /* Efek glassmorphism */
+    transition: all 0.3s ease;
+}
+
+/* --- Seksi di dalam Panel --- */
+.panel-section {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+.panel-section:last-child {
+    border-bottom: none;
+}
+.panel-section h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* --- Grup Input (Lebar, Panjang, Tinggi) --- */
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.input-group input {
+    width: 70px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px;
+    text-align: right;
+}
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Tombol Utama (Buat Ruangan) --- */
+#create-room-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.2s ease;
+}
+#create-room-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* --- Grup Tombol (Mode Kontrol) --- */
+.button-group {
+    display: flex;
+    width: 100%;
+}
+.mode-btn {
+    flex-grow: 1;
+    border: 1px solid var(--border-color);
+    background-color: var(--button-bg);
+    cursor: pointer;
+    padding: 8px;
+    font-size: 18px; /* Ukuran ikon */
+    transition: all 0.2s ease;
+}
+.mode-btn:hover {
+    background-color: var(--button-hover);
+}
+.mode-btn:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.mode-btn:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.mode-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* --- Grid Tombol (Elemen & Perabotan) - KUNCI RESPONSIVENESS --- */
+.button-grid {
+    display: flex;
+    flex-wrap: wrap; /* Ini membuat tombol turun ke baris baru jika tidak muat */
+    gap: 8px; /* Jarak antar tombol */
+}
+.add-element-btn, .add-item-btn {
+    flex-grow: 1; /* Tombol akan mengisi ruang yang tersedia */
+    min-width: 80px; /* Lebar minimum sebelum tombol turun ke baris baru */
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--button-bg);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+.add-element-btn:hover, .add-item-btn:hover {
+    background-color: var(--button-hover);
+    border-color: #ccc;
+}
+/* --- BARU: Styling untuk Palet Warna --- */
+#color-palette {
+    justify-content: space-around; /* Menyebar warna secara merata */
+}
+
+.color-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%; /* Membuatnya menjadi lingkaran */
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.1); /* Sedikit membesar saat disentuh mouse */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
